@@ -1,4 +1,4 @@
-export const CARS = [
+export const Cars = [
     {
       '_id': '59d2698c2eaefb1268b69ee5',
       'make': 'Chevy',
