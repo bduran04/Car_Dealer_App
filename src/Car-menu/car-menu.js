@@ -9,41 +9,45 @@ import { useState } from 'react';
 import Select from '@mui/material/Select';
 
 const CarMenu = (props) => {
-const [car, setCar] = useState('');
+    const [car, setCar] = useState('');
 
     const updateCarName = (event) => {
         //taking the property event & when user clicks, creates a event propogation. 
         // the target of the event = menuItem tag. This is destructurig the value from target
-        const { 
-          target: { value },
+        const {
+            target: { value },
         } = event;
         console.log(value);
         setCar(value);
-      };
+    };
 
-//find a way to post process the data so that line 36 only maps unique values 
+    //find a way to post process the data so that line 36 only maps unique values 
+    const usedCarOption = [];
+    for (var i = 0; i < cars.make[i].length; i++) {
+        if (!usedCarOption.includes(cars[i].make)) {
+            usedCarOption.push(cars[i].make);}}
 
-    return (
-        <div>
-                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
-                <Select
-                    labelId="demo-multiple-name-label"
-                    id="demo-multiple-name"
-                    value={car}
-                    onChange={updateCarName}
-                    input={<OutlinedInput label="Name" />}
-                >
-                    {Cars.map((car) => (
-                        <MenuItem
-                            key={car.make}
-                            value={car.make}
+                return (
+                    <div>
+                        <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                        <Select
+                            labelId="demo-multiple-name-label"
+                            id="demo-multiple-name"
+                            value={car}
+                            onChange={updateCarName}
+                            input={<OutlinedInput label="Name" />}
                         >
-                            {car.make}
-                        </MenuItem>
-                    ))}
-                </Select>
-        </div>
-    )
-};
+                            {Cars.map((car) => (
+                                <MenuItem
+                                    key={car.make}
+                                    value={car.make}
+                                >
+                                    {car.make}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </div>
+                )
+            };
 
-export default CarMenu;
+            export default CarMenu;
